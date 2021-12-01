@@ -1,7 +1,6 @@
 import pygame
 from pygame.sprite import Sprite
-from dino_runner.utils.constants import RUNNING,DUCKING
-
+from dino_runner.utils.constants import RUNNING, DUCKING, JUMPING
 
 
 class Dinosaur(Sprite):
@@ -24,16 +23,17 @@ class Dinosaur(Sprite):
     def update(self, user_input):
         if self.dino_jump:
             self.jump()
-        if self.dino.duck:
+        if self.dino_duck:
             self.duck()
         if self.dino_run:
             self.run()
+
         if user_input[pygame.K_DOWN] and not self.dino_jump:
             self.dino_run = False
             self.dino_duck = True
             self.dino_jump = False
 
-        elif user_input[K_UP]and not self.dino_jump:
+        elif user_input[pygame.K_UP] and not self.dino_jump:
             self.dino_run = False
             self.dino_duck = False
             self.dino_jump = True
@@ -42,9 +42,7 @@ class Dinosaur(Sprite):
             self.dino_duck = False
             self.dino_jump = False
 
-
-
-         if self.step_index >= 10:
+        if self.step_index >= 10:
             self.step_index = 0
 
     def draw(self,screen):
