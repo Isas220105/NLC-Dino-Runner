@@ -1,7 +1,7 @@
 import pygame
 
 from dino_runner.components import game
-from dino_runner.components.obstacles.cactus import Cactus
+from .cactus import Cactus
 from dino_runner.utils.constants import SMALL_CACTUS
 
 
